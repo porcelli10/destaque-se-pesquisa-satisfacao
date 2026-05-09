@@ -467,7 +467,6 @@
     .card:nth-child(1) { animation-delay: .1s; }
     .card:nth-child(2) { animation-delay: .2s; }
     .card:nth-child(3) { animation-delay: .3s; }
-    .card:nth-child(4) { animation-delay: .4s; }
   </style>
 </head>
 <body>
@@ -480,29 +479,13 @@
       <span class="logo-name">Destaque-se</span>
     </div>
     <h1>Pesquisa de Satisfação</h1>
-    <p>Sua opinião nos ajuda a entregar automações com IA cada vez melhores para a sua assistência técnica.</p>
+    <p>Pesquisa 100% anônima. Sua opinião honesta nos ajuda a entregar automações com IA cada vez melhores para a sua assistência técnica.</p>
   </header>
 
   <!-- Form -->
   <form id="form" novalidate>
 
-    <!-- Card 1: Identificação -->
-    <div class="card">
-      <div class="card-label">// identificação</div>
-      <h2>Como podemos te identificar? <span class="optional-tag">(opcional)</span></h2>
-      <div class="fields-row">
-        <div class="field">
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" placeholder="Seu nome" autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="email">E-mail</label>
-          <input type="email" id="email" placeholder="seu@email.com" autocomplete="email">
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 2: NPS -->
+    <!-- Card 1: NPS -->
     <div class="card" id="card-nps">
       <div class="card-label">// nps — net promoter score</div>
       <h2>Qual a chance de você recomendar a Destaque-se para um amigo ou parceiro de negócios?</h2>
@@ -546,13 +529,20 @@
       </div>
     </div>
 
-    <!-- Card 4: Comentário -->
+    <!-- Card 3: Comentário + e-mail opcional -->
     <div class="card">
       <div class="card-label">// comentário livre</div>
       <h2>Tem algo que poderíamos melhorar — ou que você amou? <span class="optional-tag">(opcional)</span></h2>
       <div class="field">
         <textarea id="comentario" placeholder="Compartilhe sua experiência, sugestões ou elogios..." maxlength="500"></textarea>
         <div class="char-count"><span id="char-n">0</span>/500</div>
+      </div>
+      <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--dim);">
+        <div class="card-label" style="margin-bottom:.6rem;">// quer receber um retorno?</div>
+        <p style="font-size:.88rem; color:var(--muted); margin-bottom:.85rem; line-height:1.55;">Se quiser que nossa equipe entre em contato sobre sua avaliação, deixe seu e-mail. Totalmente opcional.</p>
+        <div class="field">
+          <input type="email" id="email" placeholder="seu@email.com (opcional)" autocomplete="email">
+        </div>
       </div>
     </div>
 
@@ -688,7 +678,6 @@
     btn.disabled = true;
 
     const payload = {
-      nome:       document.getElementById('nome').value.trim(),
       email:      document.getElementById('email').value.trim(),
       nps:        npsVal,
       csat:       parseInt(document.querySelector('[data-cat="csat"]').dataset.val),

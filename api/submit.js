@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { nome, email, nps, csat, automacao, suporte, facilidade, comentario } = req.body;
+  const { email, nps, csat, automacao, suporte, facilidade, comentario } = req.body;
 
   const npsNum = parseInt(nps);
   let categoria, prioridade, badge;
@@ -27,13 +27,12 @@ export default async function handler(req, res) {
 
   const stars = (n) => '⭐'.repeat(Math.max(0, Math.min(5, parseInt(n) || 0)));
 
-  const taskName = `${badge} [${categoria}] ${nome || 'Anônimo'} — NPS ${nps}/10`;
+  const taskName = `${badge} [${categoria}] Anônimo — NPS ${nps}/10`;
 
   const description = [
     `## Pesquisa de Satisfação — Destaque-se`,
     ``,
-    `**Respondente:** ${nome || '*(não informado)*'}`,
-    `**E-mail:** ${email || '*(não informado)*'}`,
+    `**E-mail para retorno:** ${email || '*(não informado)*'}`,
     ``,
     `---`,
     ``,
