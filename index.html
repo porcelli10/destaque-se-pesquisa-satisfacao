@@ -11,15 +11,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #07090d;
-      --surface:  #0d1420;
-      --surface2: #111b28;
-      --dim:      #1e2d3d;
-      --accent:   #00f090;
+      --bg:       #08060f;
+      --surface:  #100c1e;
+      --surface2: #160f28;
+      --dim:      #2a1f45;
+      --accent:   #7B35E8;
+      --accent2:  #9D5FFF;
       --gold:     #ffc800;
       --danger:   #ff3a5c;
-      --text:     #d8e8f0;
-      --muted:    #5a7080;
+      --text:     #e8e0f5;
+      --muted:    #7a6a9a;
       --font-display: 'Orbitron', sans-serif;
       --font-body:    'Outfit', sans-serif;
       --font-mono:    'Space Mono', monospace;
@@ -43,8 +44,8 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,240,144,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,240,144,.03) 1px, transparent 1px);
+        linear-gradient(rgba(123,53,232,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123,53,232,.04) 1px, transparent 1px);
       background-size: 44px 44px;
       pointer-events: none;
       z-index: 0;
@@ -59,7 +60,7 @@
       transform: translateX(-50%);
       width: 900px;
       height: 500px;
-      background: radial-gradient(ellipse, rgba(0,240,144,.07) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(123,53,232,.1) 0%, transparent 65%);
       pointer-events: none;
       z-index: 0;
     }
@@ -91,15 +92,6 @@
       border-radius: 50%;
       box-shadow: 0 0 14px var(--accent);
       animation: blink 2.2s ease infinite;
-    }
-
-    .logo-name {
-      font-family: var(--font-display);
-      font-size: .85rem;
-      font-weight: 900;
-      letter-spacing: .35em;
-      color: var(--accent);
-      text-transform: uppercase;
     }
 
     .header h1 {
@@ -137,8 +129,8 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: .3;
+      background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+      opacity: .4;
     }
 
     .card.invalid { border-color: rgba(255,58,92,.4); }
@@ -291,9 +283,9 @@
     }
 
     .nps-badge.show { display: flex; }
-    .nps-badge.detrator  { background: rgba(255,42,85,.12);   color: #ff2d55; border: 1px solid rgba(255,42,85,.25); }
+    .nps-badge.detrator  { background: rgba(255,42,85,.12);    color: #ff6080; border: 1px solid rgba(255,42,85,.25); }
     .nps-badge.neutro    { background: rgba(255,200,0,.1);    color: #f0c800; border: 1px solid rgba(255,200,0,.25); }
-    .nps-badge.promotor  { background: rgba(0,240,144,.1);    color: #00f090; border: 1px solid rgba(0,240,144,.25); }
+    .nps-badge.promotor  { background: rgba(123,53,232,.15);  color: var(--accent2); border: 1px solid rgba(123,53,232,.35); }
 
     /* ── Stars ── */
     .star-rows { display: flex; flex-direction: column; gap: 1.1rem; }
@@ -389,7 +381,7 @@
 
     .submit-btn:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 10px 35px rgba(0,240,144,.3);
+      box-shadow: 0 10px 35px rgba(123,53,232,.45);
     }
 
     .submit-btn:active:not(:disabled) { transform: translateY(0); }
@@ -419,8 +411,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0,240,144,.08);
-      box-shadow: 0 0 50px rgba(0,240,144,.18);
+      background: rgba(123,53,232,.1);
+      box-shadow: 0 0 50px rgba(123,53,232,.3);
       margin-bottom: 1.75rem;
       animation: popIn .55s cubic-bezier(.34,1.56,.64,1) both;
     }
@@ -458,7 +450,7 @@
     }
 
     @keyframes blink {
-      0%,100% { opacity: 1; box-shadow: 0 0 14px var(--accent); }
+      0%,100% { opacity: 1; box-shadow: 0 0 14px var(--accent2); }
       50%      { opacity: .5; box-shadow: 0 0 4px var(--accent); }
     }
 
@@ -475,8 +467,7 @@
   <!-- Header -->
   <header class="header">
     <div class="logo-wrap">
-      <div class="logo-dot"></div>
-      <span class="logo-name">Destaque-se</span>
+      <img src="/logo.png" alt="Destaque-se" style="height:64px; width:auto; margin-bottom:.5rem;">
     </div>
     <h1>Pesquisa de Satisfação</h1>
     <p>Pesquisa 100% anônima. Sua opinião honesta nos ajuda a entregar automações com IA cada vez melhores para a sua assistência técnica.</p>
@@ -594,13 +585,13 @@
 
     if (score >= 9) {
       badge.classList.add('promotor');
-      badge.textContent = '✦  Promotor — Incrível! Obrigado pela sua confiança na Destaque-se.';
+      badge.textContent = '✦  Incrível! Obrigado pela sua confiança na Destaque-se.';
     } else if (score >= 7) {
       badge.classList.add('neutro');
-      badge.textContent = '◈  Neutro — Vamos trabalhar para conquistar a sua total recomendação.';
+      badge.textContent = '◈  Vamos trabalhar para conquistar a sua total recomendação.';
     } else {
       badge.classList.add('detrator');
-      badge.textContent = '⚠  Detrator — Lamentamos. Nossa equipe vai analisar sua avaliação com atenção.';
+      badge.textContent = '⚠  Obrigado por nos contar. Nossa equipe vai analisar sua avaliação com atenção.';
     }
 
     document.getElementById('err-nps').classList.remove('show');
